@@ -39,7 +39,7 @@ class Character {
         console.log(`${this.name} rolled a ${result}.`);
     }
 
-    static MAX_HEALTH =100;
+    static MAX_HEALTH = 100;
 }
 
 const robin = new Character("Robin");
@@ -94,16 +94,38 @@ class Companion extends Character {
     }
 }
 
-    const robinAdventurer = new Adventurer("Robin", "Sniper"); // Adventurer class
-    const leo = new Companion("Leo", "Cat"); // Companion Class
-    const frank = new Companion("Frank", "Flea"); // Companion Class
+const robinAdventurer = new Adventurer("Robin", "Sniper"); // Adventurer class
+const leo = new Companion("Leo", "Cat"); // Companion Class
+const frank = new Companion("Frank", "Flea"); // Companion Class
 
-    robinAdventurer.companion = leo;
-    robinAdventurer.companion.felineFriend = frank;
-    
-    console.log(robinAdventurer);
-    console.log(robinAdventurer.companion);
-    console.log(robinAdventurer.companion.felineFriend);
+robinAdventurer.companion = leo;
+robinAdventurer.companion.felineFriend = frank;
 
-// TODO: Part Five - Gather your Party
+console.log(robinAdventurer);
+console.log(robinAdventurer.companion);
+console.log(robinAdventurer.companion.felineFriend);
+
+// TODO: Part Five - Gather your Party,
+
+
+class AdventurerFactory {
+    constructor(role) {
+        this.role = role;
+        this.adventurers = [];
+    }
+    generate(name) {
+        const newAdventurer = new Adventurer(name, this.role);
+        this.adventurers.push(newAdventurer);
+    }
+    findByIndex(index) {
+        return this.adventurers[index];
+    }
+    findByName(name) {
+        return this.adventurers.find((a) => a.name === name);
+    }
+}
+const healers = new AdventurerFactory("Healer");
+const robin = healers.generate("Robin");
+
+// TODO: Part Six - Developing Skills, 
 
