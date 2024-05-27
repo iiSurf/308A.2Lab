@@ -53,7 +53,7 @@ robin.companion.felineFriend.inventory = ["Small hat", "Sunglasses"];
 robin.companion.felineFriend.roll();
 robin.companion.roll();
 
-// TODO: Part Three - Class Features, && TODO: Part Four - Class Uniforms,
+// TODO: Part Three - Class Features, && TODO: Part Four - Class Uniforms, && TODO: Part Six - Developing Skills, 
 
 class Adventurer extends Character {
     constructor(name, role) {
@@ -85,7 +85,38 @@ class Adventurer extends Character {
     }
 
     static ROLES = ["Fighter", "Healer", "Wizard"];
+
+    duel(badGuy) {
+        while (this.health > 50 && badGuy.health > 50) {
+            const thisRoll = this.roll();
+            const badGuyRoll = badGuy.roll();
+            if (thisRoll > badGuyRoll) {
+                badGuy.health -= 1;
+            } else {
+                this.health -= 1;
+            }
+            console.log(`${this.name} rolled a ${thisRoll}. ${badGuy.name} rolled a ${badGuyRoll}.`);
+            console.log(`${this.name}'s health: ${this.health}, ${badGuy.name}'s health: ${badGuy.health}`);
+        }
+        if (this.health > 50) {
+            console.log(`${this.name} wins the duel!`);
+        } else {
+            console.log(`${badGuy.name} wins the duel!`);
+        }
+    }
 }
+// TODO: healing method as an additional resource for characters if have time
+// class Healer extends Adventurer {
+//     constructor(name) {
+//         super(name, "Healer");
+//     }
+
+//     heal(target) {
+//         const healed = 
+//     }
+//     console.log();
+//     console.log();
+// }
 
 class Companion extends Character {
     constructor(name, type) {
@@ -126,6 +157,3 @@ class AdventurerFactory {
 }
 const healers = new AdventurerFactory("Healer");
 const robin = healers.generate("Robin");
-
-// TODO: Part Six - Developing Skills, 
-
