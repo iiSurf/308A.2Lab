@@ -38,6 +38,8 @@ class Character {
         const result = Math.floor(Math.random() * 20) + 1 + mod;
         console.log(`${this.name} rolled a ${result}.`);
     }
+
+    static MAX_HEALTH =100;
 }
 
 const robin = new Character("Robin");
@@ -51,7 +53,7 @@ robin.companion.felineFriend.inventory = ["Small hat", "Sunglasses"];
 robin.companion.felineFriend.roll();
 robin.companion.roll();
 
-// TODO: Part Three - Class Features,
+// TODO: Part Three - Class Features, && TODO: Part Four - Class Uniforms,
 
 class Adventurer extends Character {
     constructor(name, role) {
@@ -65,9 +67,12 @@ class Adventurer extends Character {
         this.level = 13;
         this.xP = 130;
         this.diamondsCollected = 0;
-
-
     }
+
+    static check(role) {
+        return Adventurer.ROLES.includes(role);
+    }
+
     // Adventurers have the ability to scout ahead of them.
     scout() {
         console.log(`${this.name} is scouting ahead...`);
@@ -78,6 +83,8 @@ class Adventurer extends Character {
         this.diamondsCollected += numDiamonds;
         console.log(`${this.name} has encountered ${numDiamonds} diamonds and collected it`);
     }
+
+    static ROLES = ["Fighter", "Healer", "Wizard"];
 }
 
 class Companion extends Character {
@@ -98,5 +105,5 @@ class Companion extends Character {
     console.log(robinAdventurer.companion);
     console.log(robinAdventurer.companion.felineFriend);
 
-// TODO: Part Four - Class Uniforms,
+// TODO: Part Five - Gather your Party
 
