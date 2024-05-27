@@ -155,5 +155,10 @@ class AdventurerFactory {
         return this.adventurers.find((a) => a.name === name);
     }
 }
-const healers = new AdventurerFactory("Healer");
-const robin = healers.generate("Robin");
+
+// TODO: Part Seven - Adventure Forth,
+
+const you = new Adventurer("Robin");
+const enemy = new Adventurer("Leo");
+
+you.duel(enemy);
